@@ -10,6 +10,10 @@ export class AppService {
         filteredCities.push(cities[i]);
       }
     }
-    return filteredCities;
+    if (filteredCities.length < 1) {
+      return cities;
+    } else {
+      return filteredCities;
+    }
   }
 }

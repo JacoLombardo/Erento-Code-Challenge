@@ -1,5 +1,6 @@
 <div class="container">
   <h1>City Form</h1>
+  {{ model | json }}
   <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>

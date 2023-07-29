@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Search } from 'src/search';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-city-form',
@@ -15,13 +16,12 @@ export class CityFormComponent {
 
   constructor(private http: HttpClient) {}
 
-  public async getFilteredCities(search: string) {
+  public getFilteredCities(search: string): any {
     const url = 'https://localhost:3000?search=be';
     let queryParams = new HttpParams();
     queryParams = queryParams.append('search', search);
 
-    return this.http.get(url, { params: queryParams });
-    // return this.http.get(url);
+    return this.http.get<any>(url, { params: queryParams });
   }
 
   onSubmit() {
