@@ -1,6 +1,6 @@
 <div class="container">
   <h1>City Form</h1>
-  {{ model | json }}
+  {{ searchTerm | json }}
   <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
@@ -10,7 +10,7 @@
         id="cityName"
         placeholder="search city"
         required
-        [(ngModel)]="model.name"
+        [(ngModel)]="searchTerm"
         name="cityName"
         #name="ngModel"
       />
@@ -21,3 +21,7 @@
     <button type="submit" class="btn btn-success">Search</button>
   </form>
 </div>
+
+<ul>
+  <li *ngFor="let city of cities">{{ city.cityName }}</li>
+</ul>

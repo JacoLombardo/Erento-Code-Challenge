@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-export const cities = [
+import { City } from 'src/types/city';
+
+export const cities: City[] = [
   {
     uuid: '7e8a29e2-62d1-4ec1-ae15-8ff2f777318f',
     cityName: 'Berlin',
