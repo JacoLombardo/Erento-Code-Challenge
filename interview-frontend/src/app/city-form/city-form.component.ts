@@ -8,6 +8,7 @@ import { City } from '../city';
   styleUrls: ['./city-form.component.css'],
 })
 export class CityFormComponent {
+  title: string = 'City Search Form';
   searchTerm: string = '';
   cities: City[] = [];
   page: number = 1;
