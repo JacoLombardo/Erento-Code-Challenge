@@ -1,12 +1,10 @@
 <div class="container">
-  <h1>City Form</h1>
-  {{ searchTerm | json }}
-  <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
+  <h1>City Search Form</h1>
+  <div class="form-group">
+    <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
       <input
         type="text"
-        class="form-control"
+        class="city-input"
         id="cityName"
         placeholder="search city"
         required
@@ -14,14 +12,20 @@
         name="cityName"
         #name="ngModel"
       />
-      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Name is required
-      </div>
+      <button type="submit" class="city-button">Search</button>
+    </form>
+  </div>
+  <div class="results">
+    <div
+      *ngFor="
+        let city of cities | paginate : { itemsPerPage: 6, currentPage: page }
+      "
+    >
+      <h2>{{ city.cityName }}</h2>
+      <p>Count: {{ city.count }}</p>
     </div>
-    <button type="submit" class="btn btn-success">Search</button>
-  </form>
+  </div>
+  <div id="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
 </div>
-
-<ul>
-  <li *ngFor="let city of cities">{{ city.cityName }}</li>
-</ul>

@@ -10,15 +10,20 @@ import { City } from '../city';
 export class CityFormComponent {
   searchTerm: string = '';
   cities: City[] = [];
-
-  submitted = false;
+  page: number = 1;
 
   constructor(private apiService: ApiService) {}
 
-  onSubmit() {
-    this.apiService.searchCities(this.searchTerm).subscribe((data) => {
-      console.log(data);
+  ngOnInit() {
+    this.apiService.searchCities('').subscribe((data) => {
       this.cities = data;
     });
+  }
+
+  onSubmit() {
+    this.apiService.searchCities(this.searchTerm).subscribe((data) => {
+      this.cities = data;
+    });
+    this.page = 1;
   }
 }
